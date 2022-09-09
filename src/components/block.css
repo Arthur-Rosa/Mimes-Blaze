@@ -1,0 +1,11 @@
+.block {
+  cursor: pointer;
+  margin: 10px 10px 10px 10px;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(3, 3, 46);
+}
+
+.block:hover {
+  background-color: rgb(4, 4, 109);
+}

@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+}
+
+.valores {
+  text-align: center;
+  width: 20%;
+}
+
+.jogo {
+  width: 80%;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.jogar {
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: green;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.jogar:hover {
+  background-color: rgb(1, 187, 1);
+}
+
+.jogo {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
