@@ -1,0 +1,110 @@
+.Container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  top: 0px;
+  z-index: 1000;
+  position: relative;
+  border-bottom: 1px solid #323b45;
+  background: #0f1923;
+}
+
+.saldo {
+  padding: 5px;
+  background-color: #0f1923;
+  font-size: 14px;
+  height: 40px;
+}
+
+.buttons {
+  display: flex;
+  background: #0f1923;
+  width: 30%;
+  margin-top: auto;
+}
+
+.saldo {
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0f1923;
+  color: #acb1cd;
+  height: 40px;
+  font-weight: 600;
+  border: 1px solid #323b45;
+}
+
+.atual {
+  font-size: 14px;
+  background-color: #0f1923;
+  font-weight: 600;
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+img,
+.symbol {
+  background-color: #0f1923;
+}
+
+img {
+  width: 20px;
+}
+
+.currency {
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-align: right;
+  display: flex;
+}
+
+.symbol {
+  color: #8c9099;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.depositar {
+  font-size: 14px;
+  padding: 5px;
+  /* height: 40px; */
+  margin-left: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  letter-spacing: 0.4px;
+}
+
+.deposit-btn {
+  background-color: #f12c4c;
+  color: #fff;
+  border-radius: 4px;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.5s ease all;
+  font-family: "SofiaPro", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}

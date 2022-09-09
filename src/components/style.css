@@ -1,9 +1,11 @@
 .container {
   display: flex;
+  background-color: #1a242d;
 }
 
 .valores {
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   width: 20%;
 }
 
@@ -11,23 +13,70 @@
   width: 80%;
 }
 
+.form {
+  left: 83px;
+  right: 270px !important;
+  bottom: 0;
+  display: flex;
+}
+
 input[type="number"] {
   padding: 10px;
   font-size: 16px;
+  width: 100px;
+  background: #0f1923;
+  border: 1px solid transparent;
+
+  color: white;
+  border-radius: 4px;
+  align-items: flex-start !important;
+  padding: 5px 16px;
+  display: flex;
+  justify-content: center;
+  cursor: text;
+}
+
+.MiniButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  padding: 0;
+  width: 20%;
+  cursor: pointer;
+  background-color: #1a242d;
+  color: #acb1cd;
+  font-weight: 600;
+  border: 1px solid #323b45;
+}
+
+.MiniButton:hover {
+  background: #0f1923 !important;
+  color: #fff;
+  transition: background 0.2s;
 }
 
 .jogar {
-  margin-top: 15px;
-  padding: 10px;
-  font-size: 18px;
-  color: white;
-  background-color: green;
-  font-weight: bold;
+  width: 100%;
+  border: none;
+  background-color: #f12c4c;
+  color: #fff;
+  border-radius: 4px;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
   cursor: pointer;
 }
 
 .jogar:hover {
-  background-color: rgb(1, 187, 1);
+  transition: background-color 0.5s ease;
+  background-color: #cc2843;
+}
+
+.label-form {
+  color: #797b95;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 .jogo {

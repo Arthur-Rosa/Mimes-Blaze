@@ -1,0 +1,17 @@
+.App {
+  max-width: 1200px;
+  background-color: #0f1923;
+  padding: 40px;
+}
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+html::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: #0f1923;
+  border-radius: 10px;
+}

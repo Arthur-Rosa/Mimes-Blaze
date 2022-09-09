@@ -8,12 +8,15 @@ const Home = () => {
     setMult(childData);
   };
 
+  const [isExplod, setIsExplod] = useState(false);
   const handleGameOver = () => {
     setPartida(false);
     setMult(0);
     setAposta(0);
-    alert("explodiu");
+    setIsExplod(true);
   };
+
+  console.log(mult);
 
   const [saldo, setSaldo] = useState(10.0);
   const [aposta, setAposta] = useState(0);
@@ -21,7 +24,7 @@ const Home = () => {
   var blocks = [];
 
   if (blocks.length === 0) {
-    for (var i = 0; i < 16; i++) {
+    for (var i = 0; i < 25; i++) {
       blocks[i] = {
         id: i,
       };
@@ -47,13 +50,17 @@ const Home = () => {
       <div className="valores">
         <h3>Saldo R$ {saldo}</h3>
         <div className="input-value" name="aposta" id="aposta">
-          <hr />
-          <h2>Digite o Valor da Aposta</h2>
-          <input
-            type="number"
-            placeholder="Digite o valor"
-            onChange={(e) => setAposta(e.target.valueAsNumber)}
-          />
+          <label className="label-form">Quantia R$</label>
+          <div className="form">
+            <input
+              type="number"
+              placeholder="Digite o valor"
+              value={isExplod ? aposta : aposta}
+              onChange={(e) => setAposta(e.target.valueAsNumber)}
+            />
+            <button className="MiniButton">½</button>
+            <button className="MiniButton">X2</button>
+          </div>
           <br />
           {aposta > saldo ? (
             <span style={{ color: "red" }}>Valor maior que o Saldo</span>
@@ -61,7 +68,7 @@ const Home = () => {
             <></>
           )}
           <button className="jogar" type="btn" onClick={(e) => inicarJogo(e)}>
-            Jogar
+            Começar o jogo
           </button>
           <br />
           {mult > 1 ? (
@@ -78,20 +85,21 @@ const Home = () => {
         </div>
       </div>
       <div className="jogo">
-        {partida === true ? (
-          blocks.map((block) => {
-            return (
-              <Block
-                gameOptions={handleGameOver}
-                parentCallback={handleCallback}
-                key={block.id}
-                data={block}
-              />
-            );
-          })
-        ) : (
-          <span>Inicie o Jogo</span>
-        )}
+        {partida === true
+          ? blocks.map((block) => {
+              return (
+                <Block
+                  gameOptions={handleGameOver}
+                  parentCallback={handleCallback}
+                  key={block.id}
+                  data={block}
+                  clique={true}
+                />
+              );
+            })
+          : blocks.map((block) => {
+              return <Block clique={false} />;
+            })}
       </div>
     </div>
   );

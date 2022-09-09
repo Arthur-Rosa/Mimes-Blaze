@@ -3,7 +3,7 @@ import "./block.css";
 
 var mult = 1;
 
-const Block = ({ data, parentCallback, gameOptions }) => {
+const Block = ({ data, parentCallback, gameOptions, clique }) => {
   const onTrigger = (event) => {
     parentCallback(event);
     event.preventDefault();
@@ -26,7 +26,6 @@ const Block = ({ data, parentCallback, gameOptions }) => {
   ) {
     armazem[data] = true;
   }
-  console.log(mult);
   // console.log(armazem);
   function isBombOrNo(e) {
     // console.log(data);
@@ -35,18 +34,19 @@ const Block = ({ data, parentCallback, gameOptions }) => {
       if (armazem[key]) {
         e.target.className = "block bomb";
         setNameSubClass("block bomb");
+        mult = 1;
         onGameOver();
       } else {
         e.target.className = "block diamond";
         setNameClass("block diamond");
-        mult = mult * 2;
+        mult = mult * 1.5;
         onTrigger(mult);
       }
     }
   }
 
   return (
-    <div className="block" id={data} onClick={isBombOrNo}>
+    <div className="block" id={data} onClick={clique ? isBombOrNo : ""}>
       <div className="content">
         {nameClass === "block diamond" ? (
           <span style={{ color: "white" }}>Dima</span>
