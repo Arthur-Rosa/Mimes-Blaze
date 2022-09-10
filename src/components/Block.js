@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { SketchLogo } from "phosphor-react"
+import { FaBomb} from "react-icons/fa"
 import "./block.css";
 
-var mult = 1;
+import Diamond from "../audio/1.mp3";
+import {Howl, Howler} from "howler";
 
-const Block = ({ data, parentCallback, gameOptions, clique }) => {
+const Block = ({ data, parentCallback, gameOptions, clique, mult }) => {
+
+  var sound = new Howl({
+    src: Diamond
+  });
+  
+
   const onTrigger = (event) => {
     parentCallback(event);
     event.preventDefault();
@@ -37,6 +46,7 @@ const Block = ({ data, parentCallback, gameOptions, clique }) => {
         mult = 1;
         onGameOver();
       } else {
+        sound.play();
         e.target.className = "block diamond";
         setNameClass("block diamond");
         mult = mult * 1.5;
@@ -49,12 +59,12 @@ const Block = ({ data, parentCallback, gameOptions, clique }) => {
     <div className="block" id={data} onClick={clique ? isBombOrNo : ""}>
       <div className="content">
         {nameClass === "block diamond" ? (
-          <span style={{ color: "white" }}>Dima</span>
+          <span className="diamond-logo"><SketchLogo size={100} /></span>
         ) : (
           <></>
         )}
         {nameSubClass === "block bomb" ? (
-          <span style={{ color: "red" }}>bomb</span>
+          <span className="bomb-logo" style={{ fontSize: "85px", color: "red" }}><FaBomb /></span>
         ) : (
           <></>
         )}

@@ -87,3 +87,23 @@ input[type="number"] {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.diamond, .bomb{
+  text-align: center;
+}
+
+.bomb-logo {
+  
+}
+
+.diamond-logo{
+  color: rgb(7, 255, 243);
+}
+
+.input-value {
+  margin-top: 50px;
+}
+
+.multiplicador{
+  margin-top: 25px;
+}

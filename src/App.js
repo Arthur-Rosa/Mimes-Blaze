@@ -1,13 +1,21 @@
+import React, { useState } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 
 function App() {
+
+  const [saldo, setSaldo] = useState(0);
+
+  const getSaldoHeaderToApp = (childData) => {
+    setSaldo(childData);
+  };
+
   return (
     <>
-      <Header />
+      <Header saldo={saldo} />
       <div className="App">
-        <Home />
+        <Home setSaldoHeaderToApp={getSaldoHeaderToApp} />
       </div>
     </>
   );

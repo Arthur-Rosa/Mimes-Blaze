@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import Block from "./Block";
 import "./style.css";
 
-const Home = () => {
-  const [mult, setMult] = useState("");
+const Home = ({ setSaldoHeaderToApp }) => {
+  const [mult, setMult] = useState(1);
   const handleCallback = (childData) => {
     setMult(childData);
   };
 
+  const setSaldoHeader = (childData) => {
+    setSaldoHeaderToApp(childData);
+  };
+
+
   const [isExplod, setIsExplod] = useState(false);
   const handleGameOver = () => {
     setPartida(false);
-    setMult(0);
+    setMult(1);
     setAposta(0);
     setIsExplod(true);
   };
@@ -19,6 +24,7 @@ const Home = () => {
   console.log(mult);
 
   const [saldo, setSaldo] = useState(10.0);
+  setSaldoHeader(saldo)
   const [aposta, setAposta] = useState(0);
   const [partida, setPartida] = useState(false);
   var blocks = [];
@@ -35,20 +41,30 @@ const Home = () => {
     if (aposta > saldo || partida || aposta == 0) {
       return;
     } else {
-      setSaldo(saldo - aposta);
+      setSaldo(saldo - aposta)
       setPartida(true);
     }
   };
 
   const retirarMoney = (e) => {
     setSaldo(saldo + aposta * mult);
+    setSaldoHeader(saldo + aposta * mult)
     setPartida(false);
-    setMult(0);
+    setMult(1);
   };
+
+  const dividirAposta = (e) => {
+    setAposta(aposta / 2)
+  }
+
+  const multiplicarAposta = (e) => {
+    setAposta(aposta * 2)
+  }
+
   return (
     <div className="container">
       <div className="valores">
-        <h3>Saldo R$ {saldo}</h3>
+        {/* <h3 style={{ color: "white" }}>Saldo R$ {saldo.toFixed(2)}</h3> */}
         <div className="input-value" name="aposta" id="aposta">
           <label className="label-form">Quantia R$</label>
           <div className="form">
@@ -58,8 +74,8 @@ const Home = () => {
               value={isExplod ? aposta : aposta}
               onChange={(e) => setAposta(e.target.valueAsNumber)}
             />
-            <button className="MiniButton">½</button>
-            <button className="MiniButton">X2</button>
+            <button className="MiniButton" onClick={(e) => dividirAposta(e)}>½</button>
+            <button className="MiniButton" onClick={(e) => multiplicarAposta(e)}>X2</button>
           </div>
           <br />
           {aposta > saldo ? (
@@ -71,13 +87,17 @@ const Home = () => {
             Começar o jogo
           </button>
           <br />
-          {mult > 1 ? (
+          {partida ? (
             <>
-              <span>Multiplicador {mult}X</span>
-              <br />
-              <button className="jogar" onClick={(e) => retirarMoney(e)}>
-                Retirar R${aposta * mult}
-              </button>
+              <div className="multiplicador">
+                <div className="multSpan">
+                  <span style={{ color: "white" }}>Multiplicador {mult.toFixed(2)}X</span>
+                </div>
+                <br />
+                <button className="jogar" onClick={(e) => retirarMoney(e)}>
+                  Retirar R${aposta * mult}
+                </button></div>
+
             </>
           ) : (
             <></>
@@ -87,19 +107,20 @@ const Home = () => {
       <div className="jogo">
         {partida === true
           ? blocks.map((block) => {
-              return (
-                <Block
-                  gameOptions={handleGameOver}
-                  parentCallback={handleCallback}
-                  key={block.id}
-                  data={block}
-                  clique={true}
-                />
-              );
-            })
+            return (
+              <Block
+                gameOptions={handleGameOver}
+                parentCallback={handleCallback}
+                key={block.id}
+                data={block}
+                clique={true}
+                mult={mult}
+              />
+            );
+          })
           : blocks.map((block) => {
-              return <Block clique={false} />;
-            })}
+            return <Block clique={false} />;
+          })}
       </div>
     </div>
   );

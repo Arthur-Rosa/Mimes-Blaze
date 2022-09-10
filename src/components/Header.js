@@ -1,7 +1,8 @@
 import React from "react";
 import "./header.css";
 
-const Header = () => {
+const Header = ({ saldo }) => {
+
   return (
     <div className="Container">
       <div className="Logo">
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="buttons">
         <div className="saldo">
           <div class="atual">
-            <span class="symbol">R$</span>0.00
+            <span class="symbol">R$</span>{saldo.toFixed(2)}
             <div style={{ marginLeft: "5px" }}>
               <img src="../images/BRL.svg" />
             </div>
