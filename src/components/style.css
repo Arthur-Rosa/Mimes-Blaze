@@ -92,10 +92,6 @@ input[type="number"] {
   text-align: center;
 }
 
-.bomb-logo {
-  
-}
-
 .diamond-logo{
   color: rgb(7, 255, 243);
 }
@@ -106,4 +102,41 @@ input[type="number"] {
 
 .multiplicador{
   margin-top: 25px;
+}
+
+@media screen and (max-width: 450px) {
+  
+  .Container {
+    justify-content: center;
+  }
+  .buttons {
+    width: 60% !important;
+  }
+  .container {
+    display: block;
+  }
+  .valores {
+    text-align: center;
+    width: 80%;
+  }
+  .form {
+
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .buttons {
+    width: 80% !important;
+  }
+}
+
+.arth {
+  color: white;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.arth:hover{
+  color: #323b45;
 }

@@ -49,7 +49,7 @@ const Block = ({ data, parentCallback, gameOptions, clique, mult }) => {
         sound.play();
         e.target.className = "block diamond";
         setNameClass("block diamond");
-        mult = mult * 1.5;
+        mult = mult * 1.25;
         onTrigger(mult);
       }
     }

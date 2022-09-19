@@ -10,3 +10,79 @@
 .block:hover {
   background-color: rgb(4, 4, 109);
 }
+
+@media screen and (max-width: 450px) {
+  .block {
+    width: 40px;
+    height: 40px;
+  }
+  .jogo {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+  .diamond svg{
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .bomb svg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+@media screen and (max-width: 391px) {
+  .block {
+    width: 35px;
+    height: 35px;
+  }
+  .jogo {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+  .diamond svg{
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .bomb svg {
+    width: 35px !important;
+    height: 35px !important;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .block {
+    width: 30px;
+    height: 30px;
+  }
+  .jogo {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+  .diamond svg{
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .bomb svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media screen and (max-width: 333px) {
+  .block {
+    width: 25px;
+    height: 25px;
+  }
+  .jogo {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+  .diamond svg{
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .bomb svg {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}

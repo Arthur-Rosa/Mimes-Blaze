@@ -18,6 +18,7 @@ const Home = ({ setSaldoHeaderToApp }) => {
     setPartida(false);
     setMult(1);
     setAposta(0);
+    setApostaInput(0)
     setIsExplod(true);
   };
 
@@ -26,6 +27,7 @@ const Home = ({ setSaldoHeaderToApp }) => {
   const [saldo, setSaldo] = useState(10.0);
   setSaldoHeader(saldo)
   const [aposta, setAposta] = useState(0);
+  const [apostaInput, setApostaInput] = useState(0)
   const [partida, setPartida] = useState(false);
   var blocks = [];
 
@@ -38,11 +40,14 @@ const Home = ({ setSaldoHeaderToApp }) => {
   }
   // console.log(blocks);
   const inicarJogo = (e) => {
-    if (aposta > saldo || partida || aposta == 0) {
+    if (apostaInput > saldo || partida || apostaInput == 0) {
       return;
     } else {
-      setSaldo(saldo - aposta)
+      setAposta(apostaInput)
+      setSaldo(saldo - apostaInput)
       setPartida(true);
+      
+      setApostaInput(0);
     }
   };
 
@@ -54,54 +59,59 @@ const Home = ({ setSaldoHeaderToApp }) => {
   };
 
   const dividirAposta = (e) => {
-    setAposta(aposta / 2)
+    setApostaInput(aposta / 2)
   }
 
   const multiplicarAposta = (e) => {
-    setAposta(aposta * 2)
+    setApostaInput(aposta * 2)
   }
 
   return (
     <div className="container">
       <div className="valores">
         {/* <h3 style={{ color: "white" }}>Saldo R$ {saldo.toFixed(2)}</h3> */}
-        <div className="input-value" name="aposta" id="aposta">
+        <div className="input-value" name="aposta" id="aposta"> 
+          <h4 className="label-form">Desenvolvido by <a class="arth" href="https://www.linkedin.com/in/arthur-rosa-a2805b208/" target="_blank">Arthur</a> ❤️</h4>
+          <br />
           <label className="label-form">Quantia R$</label>
           <div className="form">
             <input
               type="number"
               placeholder="Digite o valor"
-              value={isExplod ? aposta : aposta}
-              onChange={(e) => setAposta(e.target.valueAsNumber)}
+              value={isExplod ? apostaInput : apostaInput}
+              onChange={(e) => setApostaInput(e.target.valueAsNumber)}
             />
             <button className="MiniButton" onClick={(e) => dividirAposta(e)}>½</button>
             <button className="MiniButton" onClick={(e) => multiplicarAposta(e)}>X2</button>
           </div>
           <br />
-          {aposta > saldo ? (
+          {saldo < apostaInput ? (
             <span style={{ color: "red" }}>Valor maior que o Saldo</span>
           ) : (
             <></>
           )}
-          <button className="jogar" type="btn" onClick={(e) => inicarJogo(e)}>
-            Começar o jogo
-          </button>
-          <br />
+          
           {partida ? (
             <>
-              <div className="multiplicador">
+                <button className="jogar" onClick={(e) => retirarMoney(e)}>
+                  Retirar R${(aposta * mult).toFixed(2)}
+                </button>
+                <div className="multiplicador">
                 <div className="multSpan">
                   <span style={{ color: "white" }}>Multiplicador {mult.toFixed(2)}X</span>
                 </div>
-                <br />
-                <button className="jogar" onClick={(e) => retirarMoney(e)}>
-                  Retirar R${aposta * mult}
-                </button></div>
+              </div>
 
             </>
           ) : (
-            <></>
+            <>
+            <button className="jogar" type="btn" onClick={(e) => inicarJogo(e)}>
+            Começar o jogo
+          </button>
+          </>
           )}
+          <br />
+          
         </div>
       </div>
       <div className="jogo">
